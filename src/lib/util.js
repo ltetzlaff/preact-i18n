@@ -28,13 +28,16 @@ export function deepAssign(target, source) {
 /** Object.assign() ponyfill
  *	@private
  */
-export function assign(obj, props) {
-	for (let i in props) if (props.hasOwnProperty(i)) {
-		obj[i] = props[i];
+export function assign(obj, ...allProps) {
+	for (let index in allProps) if (allProps.hasOwnProperty(index)) {
+		let props = allProps[index];
+		for (let prop in props) if (props.hasOwnProperty(prop)) {
+			obj[prop] = props[prop];
+		}
 	}
+
 	return obj;
 }
-
 
 /** select('foo,bar') creates a mapping: `{ foo, bar }`
  *	@private
