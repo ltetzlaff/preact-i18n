@@ -22,7 +22,8 @@
     "minify:umd": "uglifyjs $npm_package_umd_main -c -m -o $npm_package_umd_main --source-map content=${npm_package_umd_main}.map",
     "docs": "documentation readme -q --section API src",
     "size": "echo \"Gzipped Size: $(strip-json-comments --no-whitespace $npm_package_main | gzip-size --raw)\"",
-    "prepublishOnly": "npm run build -s && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags"
+    "prepublishOnly": "npm run build -s && git commit -am $npm_package_version && git tag $npm_package_version && git push && git push --tags",
+    "prepare": "npm run build"
   },
   "repository": "synacor/preact-i18n",
   "keywords": [
